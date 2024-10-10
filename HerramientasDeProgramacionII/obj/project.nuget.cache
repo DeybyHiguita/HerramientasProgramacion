@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vP5BY5d9zn90ZA3HQk7AkApRYY/xo96WgbtkeQrCuZYIJtIDrIGrcRNU0BTYC0MYoGGoyALc48Hw2vK2JTVRZA==",
+  "dgSpecHash": "CNdS91TypHGBbWcHYTu2YjlY5dDkwq2rqXlLPriXkJWxoHP5DPjrELggQjNVRV4hujR1erpsms7v5D7vi64hbw==",
   "success": true,
   "projectFilePath": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\piedrahitaj\\.nuget\\packages\\bootstrap\\5.3.3\\bootstrap.5.3.3.nupkg.sha512"
+  ],
   "logs": []
 }
