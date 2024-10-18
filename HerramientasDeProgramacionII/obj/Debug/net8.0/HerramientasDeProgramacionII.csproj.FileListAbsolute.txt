@@ -1,11 +1,3 @@
-C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\appsettings.Development.json
-C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\appsettings.json
-C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.staticwebassets.runtime.json
-C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.exe
-C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.deps.json
-C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.runtimeconfig.json
-C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.dll
-C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.pdb
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\HerramientasDeProgramacionII.GeneratedMSBuildEditorConfig.editorconfig
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\HerramientasDeProgramacionII.AssemblyInfoInputs.cache
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\HerramientasDeProgramacionII.AssemblyInfo.cs
@@ -14,6 +6,14 @@ C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\ne
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\HerramientasDeProgramacionII.RazorAssemblyInfo.cache
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\HerramientasDeProgramacionII.RazorAssemblyInfo.cs
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\HerramientasDeProgramacionII.sourcelink.json
+C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\appsettings.Development.json
+C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\appsettings.json
+C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.staticwebassets.runtime.json
+C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.exe
+C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.deps.json
+C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.runtimeconfig.json
+C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.dll
+C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\bin\Debug\net8.0\HerramientasDeProgramacionII.pdb
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\staticwebassets.build.json
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\staticwebassets.development.json
 C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII\obj\Debug\net8.0\staticwebassets\msbuild.HerramientasDeProgramacionII.Microsoft.AspNetCore.StaticWebAssets.props
