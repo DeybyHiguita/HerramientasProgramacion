@@ -1,0 +1,238 @@
+﻿@using HerramientasDeProgramacionII.Models.Reservas
+@model RecervasAppModels
+
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/HerenciaPOO.css" rel="stylesheet" />
+<link href="~/css/Reserva.css" rel="stylesheet" />
+
+<section class="HerenciaPOO">
+
+    <section class="section">
+
+        @if (Model.capacidad != 0)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Capacidad de vuelos: <strong>@Model.capacidad</strong>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (Model.ultimaReserva != 0)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Ultima reserva realizada: <strong>@Model.ultimaReserva</strong>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (Model.ultimaReservaEliminar != 0)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Ultima reserva eliminada: <strong>@Model.ultimaReservaEliminar</strong>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+
+
+
+        <div class="btnsReservas">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalAgregarcapacidad">
+                Agregar Capacidad
+            </button>
+            <a asp-action="ActualizarReservas" title="Actualizar tabla">
+                <span class="material-symbols-outlined">
+                    sync
+                </span>
+            </a>
+            <a asp-action="EliminarTodasReservas" title="Eliminar todas las reservas">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </a>
+
+        </div>
+
+        <!-- Modal modalReservarVuelo-->
+        <div class="modal fade" id="modalReservarVuelo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalReservarVueloLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalReservarVuelo">Reservar puesto: <span id="idReservaTx"></span></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form asp-action="ReservarVuelo" method="post">
+                        <!-- Campo oculto para enviar el ID -->
+                        <input type="hidden" name="id" id="idReserva"/>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="" aria-describedby="alertaNombre" name="nombre" />
+                                <div id="alertaNombre" class="form-text">Debe ingresar el nombre.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Fecha Reserva</label>
+                                <input type="date" class="form-control" id="fechaReserva" aria-describedby="alertaFecha" name="fecha" />
+                                <div id="alertaFecha" class="form-text">Debe ingresar el fecha.</div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalAgregarcapacidad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAgregarcapacidadLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalAgregarcapacidadLabel">Agregar capacidad de vuelos</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form asp-action="CrearCapacidad" method="post">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="capaciadad" class="form-label">Capacidad</label>
+                                <input type="number" class="form-control" id="idCapacidad" aria-describedby="alertaCapaciadad" name="capacidad" />
+                                <div id="alertaCapaciadad" class="form-text">Debe ingresar la capacidad.</div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link btn-light active" id="dispobibles-tab" data-bs-toggle="pill" data-bs-target="#disponibles-home" type="button" role="tab" aria-controls="disponibles-home" aria-selected="true">Disponibles</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reservadas-tab" data-bs-toggle="pill" data-bs-target="#reservadas-profile" type="button" role="tab" aria-controls="reservadas-profile" aria-selected="false">Reservadas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="todasReservas-tab" data-bs-toggle="pill" data-bs-target="#todas-reservas" type="button" role="tab" aria-controls="todas-reservas" aria-selected="false">Todas</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="disponibles-home" role="tabpanel" aria-labelledby="dispobibles-tab" tabindex="0">
+                @if (Model.disponibles != null && Model.disponibles.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var reserva in Model.disponibles)
+                            {
+                                <tr>
+                                    <td>@reserva.id</td>
+                                    <td>@(reserva.estado ? "Activo" : "Inactivo")</td>
+                                    <td>
+                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalReservarVuelo" onclick="ReservaId(@reserva.id)">
+                                            <span class="material-symbols-outlined">
+                                                open_in_new
+                                            </span>
+                                        </button>
+
+                                    </td>
+       
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>No hay reservas disponibles.</p>
+                }
+            </div>
+            <div class="tab-pane fade" id="reservadas-profile" role="tabpanel" aria-labelledby="reservadas-tab" tabindex="0">
+                @if (Model.reservadas != null && Model.reservadas.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var reserva in Model.reservadas)
+                            {
+                                <tr>
+                                    <td>@reserva.id</td>
+                                    <td>@reserva.nombre</td>
+                                    <td>@(reserva.estado ? "Activo" : "Inactivo")</td>
+                                    <td>@reserva.fecha.ToString("yyyy-MM-dd")</td>
+                                    <td>
+                                        <a asp-action="EliminarReserva" asp-route-id="@reserva.id">
+                                            <span class="material-symbols-outlined">
+                                                delete
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>No hay reservas disponibles.</p>
+                }
+            </div>
+            <div class="tab-pane fade" id="todas-reservas" role="tabpanel" aria-labelledby="todasReservas-tab" tabindex="0">
+                @if (Model.reservaModels != null && Model.reservaModels.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var reserva in Model.reservaModels)
+                            {
+                                <tr>
+                                    <td>@reserva.id</td>
+                                    <td>@(reserva.estado ? "Activo" : "Inactivo")</td>
+                                    <td>@(string.IsNullOrEmpty(reserva.nombre) ? "Fecha no disponible" : reserva.fecha.ToString("yyyy-MM-dd"))</td>
+                                    <td>@(string.IsNullOrEmpty(reserva.nombre) ? "Nombre no disponible" : reserva.nombre)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>No hay reservas disponibles.</p>
+                }
+            </div>
+        </div>
+
+
+    </section>
+</section>
+
+<script src="~/js/reservasapp.js"></script>
