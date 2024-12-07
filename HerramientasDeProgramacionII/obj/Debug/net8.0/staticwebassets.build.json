@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "llNE++bWlKuTzloTY/b5f59ZdM2I3gZf5/SKum8+LIk=",
+  "Hash": "2wI0j9UgKfdDYNEuWp0wv6zCwr42gHdSuoakvmO3enU=",
   "Source": "HerramientasDeProgramacionII",
   "BasePath": "_content/HerramientasDeProgramacionII",
   "Mode": "Default",
@@ -74,6 +74,25 @@
       "OriginalItemSpec": "wwwroot\\css\\HerenciaPOO.css"
     },
     {
+      "Identity": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\css\\Reserva.css",
+      "SourceId": "HerramientasDeProgramacionII",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\",
+      "BasePath": "_content/HerramientasDeProgramacionII",
+      "RelativePath": "css/Reserva.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Reserva.css"
+    },
+    {
       "Identity": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\css\\site.css",
       "SourceId": "HerramientasDeProgramacionII",
       "SourceType": "Discovered",
@@ -110,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\js\\ReservasApp.js",
+      "SourceId": "HerramientasDeProgramacionII",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\",
+      "BasePath": "_content/HerramientasDeProgramacionII",
+      "RelativePath": "js/ReservasApp.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ReservasApp.js"
     },
     {
       "Identity": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\js\\site.js",

@@ -9,12 +9,20 @@
       "PackagePath": "staticwebassets\\css\\HerenciaPOO.css"
     },
     {
+      "Id": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\css\\Reserva.css",
+      "PackagePath": "staticwebassets\\css\\Reserva.css"
+    },
+    {
       "Id": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\js\\ReservasApp.js",
+      "PackagePath": "staticwebassets\\js\\ReservasApp.js"
     },
     {
       "Id": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\js\\site.js",
