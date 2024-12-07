@@ -1,0 +1,26 @@
+# Ignorar archivos de configuración de Visual Studio
+.vs/
+*.jfm
+*.dbmdl
+bin/
+obj/
+
+
+# Ignorar archivos de compilación
+/bin/
+/obj/
+
+# Archivos de usuario de Visual Studio
+*.user
+
+# Archivos de configuración local
+launchSettings.json
+
+# Ignorar archivos y carpetas generados por Visual Studio
+
+bin/
+obj/
+*.suo
+*.user
+*.cache
+*.log

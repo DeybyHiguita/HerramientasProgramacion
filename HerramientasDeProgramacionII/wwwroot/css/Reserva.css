@@ -1,0 +1,10 @@
+﻿.btnsReservas {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+ul#pills-tab {
+    margin-top: 3%;
+}

@@ -1,0 +1,100 @@
+﻿@model FigurasModels
+@{
+    Layout = "_Layout";
+}
+
+
+
+<link href="~/css/HerenciaPOO.css" rel="stylesheet" />
+
+<section class="HerenciaPOO">
+    @Html.Partial("MenuFigura")
+
+    <section class="section">
+
+        <div class="contenido">
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="alert alert-dark" role="alert">
+                    @ViewBag.mensaje
+                </div>
+            }
+            <form asp-action="CalcularRectangulo" method="post">
+                <div class="divFlexHorizontal">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="ladoX" placeholder="Ingrese el lado X" name="ladoX" step="0.01">
+                        <label for="floatingInput">Lado X</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="ladoY" placeholder="Ingrese el lado Y" name="ladoY" step="0.01">
+                        <label for="floatingPassword">Lado Y</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-dark">Calcular</button>
+                <a asp-action="LimpiarModelo" asp-route-vista="Rectangulo" class="btn btn-outline-dark">Limpiar</a>
+            </form>
+
+
+        </div>
+
+        @if (ViewBag.resultadoFiguraModels != null)
+        {
+            <div class="contenido">
+                <div class="divFlexHorizontalSB">
+                    <div class="calculos">
+                        <ul class="list-group">
+                            <li class="list-group-item" id="resultadosLadoX">Lado X: @ViewBag.resultadoFiguraModels.ladoX</li>
+                            <li class="list-group-item" id="resultadosLadoY">Lado Y: @ViewBag.resultadoFiguraModels.ladoY</li>
+                            <li class="list-group-item" id="resultadosArea">Area: @ViewBag.resultadoFiguraModels.area</li>
+                            <li class="list-group-item" id="resultadosPerimetro">Perimetro: @ViewBag.resultadoFiguraModels.perimetro</li>
+                        </ul>
+                    </div>
+                    <div class="figura">
+                        <canvas id="miCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+</section>
+
+<script>
+
+    var ladoResultado = @ViewBag.resultadoFiguraModels?.ladoY ?? 0;
+
+    if (ladoResultado != 0) {
+        dibujarCuadrado(ladoResultado);
+    }
+    function dibujarCuadrado(ladoResultado) {
+        var canvas = document.getElementById('miCanvas');
+        var ctx = canvas.getContext('2d');
+        var lado = ladoResultado;
+
+        // Ajustar el tamaño del canvas según el tamaño del cuadrado
+        var dimensionCanvas = lado + 150; // Sumar 150px para margen adicional
+        canvas.width = dimensionCanvas;
+        canvas.height = dimensionCanvas;
+
+        // Limpiar el canvas antes de dibujar
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Dibujar el cuadrado
+        ctx.beginPath();
+        ctx.rect(25, 25, lado, lado); // Dibujar un cuadrado en (25, 25) con el tamaño del lado
+        ctx.stroke();
+
+        // Dibujar la línea del lado
+        ctx.beginPath();
+        ctx.moveTo(25, 25); // Esquina superior izquierda del cuadrado
+        ctx.lineTo(25 + parseInt(lado), 25); // Línea a lo largo de la parte superior
+        ctx.stroke();
+
+        // Mostrar el valor del lado
+        ctx.font = "16px Arial";
+        ctx.fillText("Lado: " + lado + " px", 35, 15);
+    }
+
+
+</script>
+
+
