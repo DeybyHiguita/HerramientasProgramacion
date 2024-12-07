@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2wI0j9UgKfdDYNEuWp0wv6zCwr42gHdSuoakvmO3enU=",
+  "Hash": "uRPWx6SoZP3W59Ng5qjspgWG5McJq64LGFgjABxEesU=",
   "Source": "HerramientasDeProgramacionII",
   "BasePath": "_content/HerramientasDeProgramacionII",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\HerramientasDeProgramacionII.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\css\\Empleado.css",
+      "SourceId": "HerramientasDeProgramacionII",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\",
+      "BasePath": "_content/HerramientasDeProgramacionII",
+      "RelativePath": "css/Empleado.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Empleado.css"
     },
     {
       "Identity": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\css\\HerenciaPOO.css",

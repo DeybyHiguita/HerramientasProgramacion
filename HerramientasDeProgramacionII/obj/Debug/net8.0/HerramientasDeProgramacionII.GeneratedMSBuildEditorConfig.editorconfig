@@ -18,6 +18,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\PRUEBA\HerramientasDeProgramacionII\HerramientasDeProgramacionII
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/PRUEBA/HerramientasDeProgramacionII/HerramientasDeProgramacionII/Views/Empleado/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cQ3JlYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PRUEBA/HerramientasDeProgramacionII/HerramientasDeProgramacionII/Views/Empleado/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cRGV0YWxsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PRUEBA/HerramientasDeProgramacionII/HerramientasDeProgramacionII/Views/Empleado/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PRUEBA/HerramientasDeProgramacionII/HerramientasDeProgramacionII/Views/Empleado/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/PRUEBA/HerramientasDeProgramacionII/HerramientasDeProgramacionII/Views/HerenciaPolimorfismo/App.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVyZW5jaWFQb2xpbW9yZmlzbW9cQXBwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

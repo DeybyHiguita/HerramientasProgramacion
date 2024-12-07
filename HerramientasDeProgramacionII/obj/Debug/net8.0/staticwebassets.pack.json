@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\HerramientasDeProgramacionII.bundle.scp.css"
     },
     {
+      "Id": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\css\\Empleado.css",
+      "PackagePath": "staticwebassets\\css\\Empleado.css"
+    },
+    {
       "Id": "C:\\PRUEBA\\HerramientasDeProgramacionII\\HerramientasDeProgramacionII\\wwwroot\\css\\HerenciaPOO.css",
       "PackagePath": "staticwebassets\\css\\HerenciaPOO.css"
     },
