@@ -3,18 +3,28 @@ using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Agregar servicios al contenedor.
 builder.Services.AddControllersWithViews();
+
+// Configurar sesiones
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Tiempo de expiración
+    options.Cookie.HttpOnly = true; // Cookie solo accesible por el servidor
+    options.Cookie.IsEssential = true; // Necesario para GDPR
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configurar el pipeline de solicitudes HTTP.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    // Configurar HSTS para entornos no de desarrollo.
     app.UseHsts();
 }
+
+// Configuración de localización por defecto.
 var defaultCulture = new CultureInfo("en-US");
 var localizationOptions = new RequestLocalizationOptions
 {
@@ -32,9 +42,12 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Habilitar sesiones
+app.UseSession();
+
+// Configurar rutas
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=HerenciaPOO}/{action=Index}/{id?}");
 
 app.Run();
-

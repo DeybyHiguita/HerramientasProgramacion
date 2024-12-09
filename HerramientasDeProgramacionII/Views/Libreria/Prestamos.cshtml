@@ -1,0 +1,140 @@
+﻿@using HerramientasDeProgramacionII.Models.Libreria
+@model (List<PrestamoModel> prestamos, List<LibroModel> libros, List<SuscriptorModel> suscriptores)
+
+
+
+@{
+    Layout = "_Layout";
+}
+
+<section class="HerenciaPOO">
+    <section class="section">
+        <h2>Gestión de Préstamos</h2>
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <!-- Mensaje de Éxito -->
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+        }
+
+        <!-- Botón para abrir el modal de creación -->
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createModal">Agregar Préstamo</button>
+
+        <!-- Tabla de préstamos -->
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Documento del Suscriptor</th>
+                    <th>Código del Libro</th>
+                    <th>Fecha de Préstamo</th>
+                    <th>Fecha de Devolución</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var prestamo in Model.prestamos)
+                {
+                    <tr>
+                        <td>@prestamo.DocSuscriptor</td>
+                        <td>@prestamo.CodigoLibro</td>
+                        <td>@prestamo.FechaPrestamo.ToShortDateString()</td>
+                        <td>@(prestamo.FechaDevolucion?.ToShortDateString() ?? "No devuelto")</td>
+                        <td>
+                            <!-- Botón Editar -->
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal-@prestamo.PrimaryKey">Devolver</button>
+                            <a asp-action="EliminarPrestamo" asp-route-codigolibro="@prestamo.PrimaryKey" asp-route-fechaprestamo="@prestamo.FechaPrestamo.ToString("yyyy-MM-dd")" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+
+                    <!-- Modal Editar -->
+                    <div class="modal fade" id="editModal-@prestamo.PrimaryKey" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel">Editar Préstamo</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form asp-action="ActualizarPrestamo" asp-controller="Libreria" method="post">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="DocSuscriptor" value="@prestamo.DocSuscriptor" />
+                                        <input type="hidden" name="CodigoLibro" value="@prestamo.CodigoLibro" />
+                                        <input type="hidden" name="FechaPrestamo" value="@prestamo.FechaPrestamo.ToString("yyyy-MM-dd")" />
+
+                                        <div class="mb-3">
+                                            <label for="FechaDevolucion" class="form-label">Fecha de Devolución</label>
+                                            <input type="date" class="form-control" name="FechaDevolucion" value="@prestamo.FechaDevolucion?.ToString("yyyy-MM-dd")" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+
+        <!-- Modal Crear -->
+        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Agregar Préstamo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form asp-action="CrearPrestamo" asp-controller="Libreria" method="post">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="DocSuscriptor" class="form-label">Suscriptor</label>
+                                <select class="form-select" name="DocSuscriptor" required>
+                                    <option value="" disabled selected>Seleccione un suscriptor</option>
+                                    @foreach (var item in Model.suscriptores)
+                                    {
+                                        <option value="@item.Documento">@item.Documento - @item.Nombre</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="CodigoLibro" class="form-label">Código del Libro</label>
+                                <select class="form-select" name="CodigoLibro" required>
+                                    <option value="" disabled selected>Seleccione un libro</option>
+                                    @foreach (var libro in Model.libros)
+                                    {
+                                        <option value="@libro.Codigo">@libro.Titulo - @libro.Autor</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="FechaPrestamo" class="form-label">Fecha de Préstamo</label>
+                                <input type="date" class="form-control" name="FechaPrestamo" required />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</section>
