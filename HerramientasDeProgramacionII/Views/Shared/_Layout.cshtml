@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/HerramientasDeProgramacionII.styles.css" asp-append-version="true" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -39,6 +39,18 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="index">Empleados</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdownLibreria" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Librería
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownLibreria">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Libreria" asp-action="CerrarSession">Cerrar Session</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Libreria" asp-action="Libro">Libros</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Libreria" asp-action="Suscriptores">Suscriptores</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Libreria" asp-action="Prestamos">Prestamos</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Libreria" asp-action="Reporte">Reporte</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

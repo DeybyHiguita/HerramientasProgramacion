@@ -1,0 +1,125 @@
+﻿@using HerramientasDeProgramacionII.Models.Libreria
+@model List<SuscriptorModel>
+
+@{
+    Layout = "_Layout";
+}
+
+<section class="HerenciaPOO">
+    <section class="section">
+        <h2>Gestión de Suscriptores</h2>
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <!-- Mensaje de Éxito -->
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <!-- Validación de Errores -->
+        @if (!ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+        }
+
+        <!-- Botón para abrir el modal de creación -->
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createModal">Agregar Suscriptor</button>
+
+        <!-- Tabla de suscriptores -->
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Documento</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var suscriptor in Model)
+                {
+                    <tr>
+                        <td>@suscriptor.Documento</td>
+                        <td>@suscriptor.Nombre</td>
+                        <td>@suscriptor.Direccion</td>
+                        <td>
+                            <!-- Botón Editar -->
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal-@Convert.ToInt64(suscriptor.Documento)">Editar</button>
+                            <a asp-action="EliminarSuscriptor" asp-route-documento="@suscriptor.Documento" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+
+                    <!-- Modal Editar -->
+                    <div class="modal fade" id="editModal-@Convert.ToInt64(suscriptor.Documento)" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel">Editar Suscriptor</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form asp-action="ActualizarSuscriptor" asp-controller="Libreria" method="post">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="Documento" value="@suscriptor.Documento" />
+                                        <div class="mb-3">
+                                            <label for="Nombre" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" name="Nombre" value="@suscriptor.Nombre" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="Direccion" class="form-label">Dirección</label>
+                                            <input type="text" class="form-control" name="Direccion" value="@suscriptor.Direccion" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+
+        <!-- Modal Crear -->
+        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Agregar Suscriptor</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form asp-action="CrearSuscriptor" asp-controller="Libreria" method="post">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="Documento" class="form-label">Documento</label>
+                                <input type="number" class="form-control" name="Documento" maxlength="8" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="Nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" name="Nombre" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="Direccion" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" name="Direccion" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</section>

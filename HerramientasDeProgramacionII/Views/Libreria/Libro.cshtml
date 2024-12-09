@@ -1,0 +1,117 @@
+﻿@using HerramientasDeProgramacionII.Models.Libreria
+@model List<LibroModel>
+
+@{
+    Layout = "_Layout";
+}
+
+<section class="HerenciaPOO">
+    <section class="section">
+        <h2>Gestión de Libros</h2>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+        }
+
+        <!-- Botón para abrir el modal de creación -->
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createModal">Agregar Libro</button>
+
+        <!-- Tabla de libros -->
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Codigo</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var libro in Model)
+                {
+                    <tr>
+                        <td>@libro.Codigo</td>
+                        <td>@libro.Titulo</td>
+                        <td>@libro.Autor</td>
+                        <td>
+                            <!-- Botón Editar -->
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal-@libro.Codigo">Editar</button>
+                            <a asp-action="EliminarLibro" asp-route-id="@libro.Codigo" class="btn btn-sm btn-info">Eliminar</a>
+                        </td>
+                    </tr>
+
+                    <!-- Modal Editar -->
+                    <div class="modal fade" id="editModal-@libro.Codigo" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel">Editar Libro</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form asp-action="ActualizarLibro" asp-controller="Libreria" method="post">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="Codigo" value="@libro.Codigo" />
+                                        <div class="mb-3">
+                                            <label for="Titulo" class="form-label">Título</label>
+                                            <input type="text" class="form-control" name="Titulo" value="@libro.Titulo" required />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="Autor" class="form-label">Autor</label>
+                                            <input type="text" class="form-control" name="Autor" value="@libro.Autor" required />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+
+        <!-- Modal Crear -->
+        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Agregar Libro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form asp-action="CrearLibro" asp-controller="Libreria" method="post">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="Codigo" class="form-label">Código</label>
+                                <input type="text" class="form-control" name="Codigo" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="Titulo" class="form-label">Título</label>
+                                <input type="text" class="form-control" name="Titulo" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="Autor" class="form-label">Autor</label>
+                                <input type="text" class="form-control" name="Autor" required />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</section>
+
+
