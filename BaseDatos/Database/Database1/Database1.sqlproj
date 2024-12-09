@@ -60,5 +60,9 @@
   <ItemGroup>
     <Build Include="empleado.sql" />
     <Build Include="empleado_empleado.sql" />
+    <Build Include="libreria.sql" />
+    <Build Include="libro.sql" />
+    <Build Include="suscriptores.sql" />
+    <Build Include="prestamos.sql" />
   </ItemGroup>
 </Project>
